@@ -153,12 +153,12 @@
 <body>
   <div class="login-card">
     <h1>🔐 Login CDF</h1>
-    <div class="subtitle">Faça seu login para consultar dados da CDF</div>
+    <div class="subtitle">Faça seu login para acessar a Nota Técnica</div>
 
     <!-- Formulário -->
     <div class="input-group">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" placeholder="seu@email.com" autocomplete="off">
+      <label for="email">E-mail / Usuário</label>
+      <input type="text" id="email" placeholder="seu@email.com ou usuário" autocomplete="off">
     </div>
 
     <div class="input-group">
@@ -192,15 +192,15 @@
     // LISTA DE USUÁRIOS AUTORIZADOS - Configure aqui os emails e senhas
     // ==================================================================
     const usuarios = [
-      { email: 'matheuscruz', senha: 'cdf2026' },
+      { email: 'cdfnota', senha: 'cdfnotagab26' },
       { email: 'fjsssilva', senha: 'cdf2026' },
       { email: 'maria@cdf.org', senha: 'maria@2025' }
       // Adicione mais usuários conforme necessário:
       // { email: 'email@dominio.com', senha: 'senha123' },
     ];
 
-    // URL de destino após login bem-sucedido
-    const DESTINO = 'https://devfjss.github.io/Sistema-Web-Consulta/';
+    // URL de destino após login bem-sucedido - NOTA TÉCNICA CDF
+    const DESTINO = 'https://devfjss.github.io/nota-tecnica-cdf/';
 
     // Elementos do DOM
     const emailInput = document.getElementById('email');
@@ -226,7 +226,7 @@
 
       // Validação básica
       if (!email || !senha) {
-        errorMsg.textContent = 'Preencha e-mail e senha.';
+        errorMsg.textContent = 'Preencha usuário/e-mail e senha.';
         return;
       }
 
@@ -234,10 +234,10 @@
       const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
 
       if (usuarioEncontrado) {
-        // Sucesso - redireciona para o destino
+        // Sucesso - redireciona para o destino (Nota Técnica CDF)
         window.location.href = DESTINO;
       } else {
-        errorMsg.textContent = 'E-mail ou senha inválidos.';
+        errorMsg.textContent = 'Usuário ou senha inválidos.';
       }
     }
 
