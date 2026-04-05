@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta CDF</title>
+  <title>Login · Nota Técnica CDF</title>
   <!-- Font Awesome para ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -152,7 +152,7 @@
 </head>
 <body>
   <div class="login-card">
-    <h1>🔐Nota Técnica CDF</h1>
+    <h1>🔐 Nota Técnica CDF</h1>
     <div class="subtitle">Faça seu login para acessar a Nota Técnica</div>
 
     <!-- Formulário -->
@@ -182,8 +182,7 @@
     </div>
 
     <div class="footer">
-      <a href="#"><i class=</i>Nota Técnica 2026 - CDF</a>
-      <a href="#"><i class=</i></a>
+      <a href="#"><i class="fas fa-file-alt"></i> Nota Técnica 2026 - CDF</a>
     </div>
   </div>
 
@@ -194,7 +193,6 @@
     const usuarios = [
       { email: 'cdfnota', senha: 'cdfnotagab26' },
       { email: 'fjssteste', senha: 'cdf2026teste' },
-     
       // Adicione mais usuários conforme necessário:
       // { email: 'email@dominio.com', senha: 'senha123' },
     ];
@@ -234,6 +232,10 @@
       const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
 
       if (usuarioEncontrado) {
+        // SALVA QUE O USUÁRIO ESTÁ LOGADO
+        sessionStorage.setItem('usuarioLogado', 'true');
+        sessionStorage.setItem('usuarioEmail', email);
+        
         // Sucesso - redireciona para o destino (Nota Técnica CDF)
         window.location.href = DESTINO;
       } else {
@@ -250,6 +252,11 @@
         if (e.key === 'Enter') realizarLogin();
       });
     });
+
+    // Se já estiver logado, redireciona direto
+    if (sessionStorage.getItem('usuarioLogado') === 'true') {
+      window.location.href = DESTINO;
+    }
   </script>
 </body>
 </html>
