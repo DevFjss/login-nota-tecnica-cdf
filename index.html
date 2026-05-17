@@ -148,6 +148,14 @@
       text-decoration: none;
       font-size: 0.85rem;
     }
+.modal-aviso{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999}
+.modal-aviso-content{background:#0a2647;border-radius:20px;max-width:400px;width:90%;padding:1.5rem;text-align:center;color:white}
+.modal-aviso-content h3{font-size:1.3rem;margin-bottom:0.8rem}
+.modal-aviso-content p{margin-bottom:0.8rem;color:#e2e8f0}
+.modal-aviso-content .pasta{background:#1e3a5f;padding:0.5rem;border-radius:10px;font-family:monospace;font-size:0.8rem;margin:1rem 0}
+.modal-aviso-btn{background:#2f80ed;color:white;padding:0.5rem 1.5rem;border-radius:30px;border:none;cursor:pointer;font-weight:bold}
+.modal-aviso-btn:hover{background:#1a68c7}
+    
   </style>
 </head>
 <body>
@@ -257,6 +265,19 @@
     if (sessionStorage.getItem('usuarioLogado') === 'true') {
       window.location.href = DESTINO;
     }
+    function avisoGerador() {
+    if(sessionStorage.getItem('avisto')) return;
+    let div = document.createElement('div');
+    div.className = 'modal-aviso';
+    div.innerHTML = `<div class="modal-aviso-content">
+        <h3>⚠️ ATENÇÃO!</h3>
+        <p>PRECISA ATUALIZAR AS BASES DO GERADOR</p>
+        <div class="pasta">📁 EXPORTAR_DADOS_NOTE_TRATAMENTO</div>
+        <button class="modal-aviso-btn" onclick="this.closest('.modal-aviso').remove(); sessionStorage.setItem('avisto','true')">FECHAR</button>
+    </div>`;
+    document.body.appendChild(div);
+}
+avisoGerador();
   </script>
 </body>
 </html>
